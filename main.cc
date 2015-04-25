@@ -1,11 +1,18 @@
-#include "node.h"
-#include "nodeGraph.h"
-#include "parser.h"
-#include "stationList.h"
-
+#include "user.h"
+#include "categoryGraph.h"
+#include "similarityMatrix.h"
+#include "userGraph.h"
+#include <curses.h>
 #include <iostream>
 #include <stdio.h>
 #include <valarray>
+
+#include <cstdlib> 
+#include <iostream>
+#include <fstream>
+#include <string>     // std::string, std::stoi
+#include <vector>
+using namespace std;
 
 #include <algorithm>    // std::max
 #include <dirent.h>
@@ -14,6 +21,111 @@ using namespace::std;
 int main(int argc, char**argv)
 {
     
+    
+    std::string::size_type sz;   // alias of size_t
+    std::string str_dec = "2001";
+    int i_dec = std::stoi (str_dec,&sz);
+    
+    categoryGraph CG;
+    userGraph UG;
+
+    CG.insertCategory(1,2);
+    
+    CG.printNodes();
+    
+    
+    
+    
+    
+    
+    std::ifstream Users("datasets/U.txt");
+    std::ifstream UserCategoriesRating("datasets/category_ratings.txt");
+    std::ifstream Categories("datasets/C.txt");
+    
+    std::string line;
+    std::string tokenOne;
+    std::string tokenTwo;
+    std::string tokenThree;
+   
+    //USERS PARSER
+    for( std::string line; getline( Users, line ); ){
+    size_t pos = 0;
+    std::string delimiter = ",";
+    std::string token; 
+    int i=0;
+    while ((pos = line.find(delimiter)) != std::string::npos) {
+        token = line.substr(0, pos);
+        tokenOne=token;
+        line.erase(0, pos + delimiter.length());
+    }
+    tokenTwo=line; 
+    
+    UG.insertUser(std::stoi (tokenOne,&sz),std::stoi (tokenTwo,&sz));
+    
+    
+    }   
+  
+    //CATEGORIES PARSER
+    for( std::string line; getline( Categories, line ); ){
+    size_t pos = 0;
+    std::string delimiter = ",";
+    std::string token; 
+    int i=0;
+    while ((pos = line.find(delimiter)) != std::string::npos) {
+        token = line.substr(0, pos);
+        tokenOne=token;
+        line.erase(0, pos + delimiter.length());
+    }
+    tokenTwo=line; 
+    
+    CG.insertCategory(std::stoi (tokenOne,&sz),std::stoi (tokenTwo,&sz));
+    
+    
+    }   
+    
+    
+   // UG.printNodes();
+   // CG.printNodes();
+    
+    similarityMatrix Matrix(CG.getcategoryList().size(),UG.getuserList().size());
+    
+    Matrix.printMatrix();
+    
+    
+    
+    //RATING PARSER
+    for( std::string line; getline( UserCategoriesRating, line ); ){
+    size_t pos = 0;
+    std::string delimiter = ",";
+    std::string token; 
+    int i=0;
+    while ((pos = line.find(delimiter)) != std::string::npos) {
+        token = line.substr(0, pos);
+        if(i==0)
+            tokenOne=token;
+        if(i==1)
+            tokenTwo=token;
+        i++;
+        line.erase(0, pos + delimiter.length());
+    }
+    tokenThree=line; 
+    //cout<<CG.getIDof(std::stoi(tokenOne))<<"->"<<tokenOne<<","<<UG.getIDof(std::stoi(tokenTwo))<<"->"<<tokenTwo<<","<<tokenThree<<endl;
+    Matrix.changeValueofMatrixAt(CG.getIDof(std::stoi(tokenOne)) , UG.getIDof(std::stoi(tokenTwo)), std::stoi(tokenThree));
+   // CG.insertCategory(std::stoi (tokenOne,&sz),std::stoi (tokenTwo,&sz));
+    
+    
+    }   
+    
+    
+    Matrix.printMatrix();
+    
+    //int **ary[][];
+    //int ary2[4][4];
+    
+    
+    
+    
+    /*
     do{
     // Prints welcome message...
     std::cout << "Welcome to ALBP1 and ALBP2 algorithms" << std::endl;
@@ -27,13 +139,11 @@ int main(int argc, char**argv)
     DIR *dir;
     struct dirent *ent;
     if ((dir = opendir ("benchmarks")) != NULL) {
-      /* print all the files and directories within directory */
       while ((ent = readdir (dir)) != NULL) {
         benchmarks.push_back(ent->d_name);
       }
       closedir (dir);
     } else {
-      /* could not open directory */
       perror ("");
       return EXIT_FAILURE;
     }
@@ -53,13 +163,13 @@ int main(int argc, char**argv)
     
     }while((benchmarkChoice>25)||(benchmarkChoice<1));
     cout<<endl<<"You have chose: "<<benchmarks[benchmarkChoice+2];
-    const string policies[] = {"LTT","STT","MFT","LNFT","RPW","LRPW","FCFS","Random","VNS","Heuristic"};
+    const string policies[] = {"LTT","STT","MFT","LNFT","RPW","FCFS","Random","VNS","Heuristic"};
     int policyChoice =0;
     do{
     cout<<endl;
     cout<<"====Choose Policy===="<<endl;
     
-    for(int i=0; i<10;i++){
+    for(int i=0; i<9;i++){
                 
                     std::cout<<i+1<<")"<<policies[i]<<std::endl;
                
@@ -116,8 +226,8 @@ int main(int argc, char**argv)
                 for(int k=0; k<dataset1.size();k++){
                     if(benchmarks[benchmarkChoice+2]==dataset1[k].name){
                         
-                        cout<<";"<<dataset1[benchmarkChoice+2].name<<endl;
-                        cout<<";"<<dataset1[k].name<<endl;
+                       // cout<<";"<<dataset1[benchmarkChoice+2].name<<endl;
+                       // cout<<";"<<dataset1[k].name<<endl;
                         cycleTime = dataset1[k].cycletimes[0];
                         
                     }
@@ -135,7 +245,7 @@ int main(int argc, char**argv)
 
           
 
-          if(policyChoice<9){
+          if(policyChoice<8){
               s.setPolicy(policies[policyChoice-1]);
               for(int i=0;i<datasetSize;i++)
               {
@@ -146,14 +256,14 @@ int main(int argc, char**argv)
               cout<<"Problems and optimal solutions\nPreced.\t\t\ngraph\t\tc\tm\tm*\n--------------------------"<<endl; 
               cout<<benchmarks[benchmarkChoice+2]<<"\t"<<cycleTime<<"\t"<<s.getStationList().size()<<"\t"<<optimumStations<<endl;
           }
-          else if(policyChoice==9){
+          else if(policyChoice==8){
               s.VNSpolicy();
               cout<<"Problems and optimal solutions\nPreced.\t\t\ngraph\t\tc\tm\tm*\n--------------------------"<<endl; 
               cout<<benchmarks[benchmarkChoice+2]<<"\t"<<cycleTime<<"\t"<<s.getStationList().size()<<"\t"<<optimumStations<<endl;
               cout<<endl<<"Optimal solutions vector\n--------------------------"<<endl;
               s.printBestSolution();
           }
-          else if(policyChoice==10){
+          else if(policyChoice==9){
              s.Heuristicpolicy();             
               cout<<"Problems and optimal solutions\nPreced.\t\t\ngraph\t\tc\tm\tm*\n--------------------------"<<endl; 
               cout<<benchmarks[benchmarkChoice+2]<<"\t"<<cycleTime<<"\t"<<s.getStationList().size()<<"\t"<<optimumStations<<endl;
@@ -168,16 +278,26 @@ int main(int argc, char**argv)
          //LB =max(p ,p m)
         
             
-                //optimumcycleTime = dataset2[benchmarkChoice-1].cycletimes[0];
-                //m = dataset2[benchmarkChoice-1].optimum[0];
+         int solution=0;
+         bool LBsolution=false;
+         bool UBsolution=false;   
+         bool MIDCsolution=false;
+       if(policyChoice>0&&policyChoice<8) 
+            do{ 
+                     cout<<"Choose a solution :\n1)LB\n2)UB\n3)MIDC"; 
+                     cout<<"\nSolution #:";      
+                     cin>>solution;
+
+             }while(solution!=1&&solution!=2&&solution!=3);  
+                
             bool found=false;
+            int foundPosition=0;
             for(int k=0; k<dataset2.size();k++){
                     if(benchmarks[benchmarkChoice+2]==dataset2[k].name){
-                        found=true;
-                        cout<<";"<<benchmarks[benchmarkChoice+2]<<endl;
-                        cout<<";"<<dataset2[k].name<<endl;
-                        m = dataset2[k].stations[0];
-                        
+                        found=true; 
+                        foundPosition=k;
+                        //m = dataset2[k].stations[0];
+                        //optumumCycleTime = dataset2[k].optimum[0];
                     }
                 }
             if (!found){
@@ -190,27 +310,26 @@ int main(int argc, char**argv)
             
             }
                 
-                cout<<"Stations #: "<<m;      
+               // cout<<"Stations #: "<<m;      
                 
+                    
+                        for (int j=0;j<dataset2[foundPosition].stations.size();j++){
+                        found=true; 
+                        m = dataset2[foundPosition].stations[j];
+                        optumumCycleTime = dataset2[foundPosition].optimum[j];
+                        if(j==0){   
+                            cout<<"Benchmark:("<<benchmarks[benchmarkChoice+2]<<")\n\n\tm\tc*\tc(LTT)\tc(STT)\tc(MFT)\tc(LNFT)\tc(RPW)\tc(FCFS)\tc(Random)\tc(VNS)\tc(Heuristic)"<<endl;
+                            
+                        }
 
            
         
-         int solution=0;
-         bool LBsolution=false;
-         bool UBsolution=false;   
-         bool MIDCsolution=false;
-       if(policyChoice>0&&policyChoice<9) 
-            do{ 
-                     cout<<"Choose a solution :\n1)LB\n2)UB\n3)MIDC"; 
-                     cout<<"\nSolution #:";      
-                     cin>>solution;
-
-             }while(solution!=1&&solution!=2&&solution!=3);  
+  
 
          int LB=std::max(Pmax,Psum/m);
          int UB=std::max(Pmax,2*Psum/m);
          int midc=(LB+UB)/2;
-         cout<<"LB:"<<LB<<" UB:"<<UB<<" midc:"<<midc<<" Pmax:"<<Pmax<<" Psum:"<<Psum<<endl;  
+         //cout<<"LB:"<<LB<<" UB:"<<UB<<" midc:"<<midc<<" Pmax:"<<Pmax<<" Psum:"<<Psum<<endl;  
          s.setMaxStations(m);
         
          
@@ -233,11 +352,12 @@ int main(int argc, char**argv)
          int maxc=UB;
          
     
-         cout<<"------------------------"<<endl;
+         //cout<<"------------------------"<<endl;
          int rememberedOne=0;
          bool enoughtStations=true;
-
-          if(policyChoice<9){
+         s.initStations();
+         s.x.initDone();
+          if(policyChoice<8){
               s.setPolicy(policies[policyChoice-1]);
               if(LBsolution||UBsolution){
                     for(int i=0;i<datasetSize;i++)
@@ -290,7 +410,7 @@ int main(int argc, char**argv)
                          s.pushTaskToStation(decidedNode);
                      }
                      
-                    cout<<"min:"<<minc<<" mid:"<<midc<<" max:"<<maxc<<" :size"<<s.getStationList().size()<<" m:"<<m<<endl;  
+                    //cout<<"min:"<<minc<<" mid:"<<midc<<" max:"<<maxc<<" :size"<<s.getStationList().size()<<" m:"<<m<<endl;  
                      //case we got a small station number then we have to decrease cycle time in order for our algorithm to get a bigger number of startions
                      if(s.getStationList().size() > m){
                       minc = midc +1;
@@ -303,14 +423,14 @@ int main(int argc, char**argv)
                             
                   }
               }
-              cout<<"Problems and optimal solutions\nPreced.\t\t\ngraph\t\tm\tc\tc*\n--------------------------"<<endl; 
+              //cout<<"Problems and optimal solutions\nPreced.\t\t\ngraph\t\tm\tc\tc*\n--------------------------"<<endl; 
               if(LBsolution||MIDCsolution)
-                 cout<<benchmarks[benchmarkChoice+2]<<"\t"<<s.getStationList().size()<<"\t"<<s.getCycleTime()<<"\t"<<optumumCycleTime<<endl;
+                 cout<<"\t"<<s.getStationList().size()<<"\t"<<optumumCycleTime<<"\t"<<s.getCycleTime()<<endl;
               if(UBsolution)
-                 cout<<benchmarks[benchmarkChoice+2]<<"\t"<<s.getStationList().size()-1<<"\t"<<s.getCycleTime()+1<<"\t"<<optumumCycleTime<<endl;
-         
+                 cout<<"\t"<<s.getStationList().size()-1<<"\t"<<optumumCycleTime<<"\t"<<s.getCycleTime()+1<<endl;
+              //int ok = beep();
           }
-          else if(policyChoice==9){
+          else if(policyChoice==8){
               
              // do{
                  s.initStations();
@@ -319,21 +439,24 @@ int main(int argc, char**argv)
                  s.setMaxStations(m);
                  s.VNSpolicy(); 
                  LB=LB+1;
-             // }while(s.getStationList().size()!=dataset2[benchmarkChoice-1].optimum[0]);
-              cout<<"Problems and optimal solutions\nPreced.\t\t\ngraph\t\tm\tc\tc*\n--------------------------"<<endl; 
-              cout<<benchmarks[benchmarkChoice+2]<<"\t"<<s.getStationList().size()<<"\t"<<s.getCycleTime()<<"\t"<<optumumCycleTime<<endl;
-              cout<<endl<<"Optimal solutions vector\n--------------------------"<<endl;
-              s.printBestSolution();
+             // }while(s.getStationList().size()!=m);
+              //cout<<"Problems and optimal solutions\nPreced.\t\t\ngraph\t\tm\tc\tc*\n--------------------------"<<endl; 
+              cout<<"\t"<<s.getStationList().size()<<"\t"<<optumumCycleTime<<"\t"<<s.getCycleTime()<<endl;
+              //cout<<endl<<"Optimal solutions vector\n--------------------------"<<endl;
+              //s.printBestSolution();
           }
-          else if(policyChoice==10){          
+          else if(policyChoice==9){          
              s.setCycleTime(LB); 
              s.setMaxStations(m);
              s.Heuristicpolicy();             
-             cout<<"Problems and optimal solutions\nPreced.\t\t\ngraph\t\tm\tc\tc*\n--------------------------"<<endl; 
-             cout<<benchmarks[benchmarkChoice+2]<<"\t"<<s.getStationList().size()<<"\t"<<s.getCycleTime()<<"\t"<<optumumCycleTime<<endl;
-             cout<<endl<<"Optimal solutions vector\n--------------------------"<<endl;
-             s.printBestHeuristicSolution();
+            // cout<<"Problems and optimal solutions\nPreced.\t\t\ngraph\t\tm\tc\tc*\n--------------------------"<<endl; 
+             cout<<"\t"<<s.getStationList().size()<<"\t"<<optumumCycleTime<<"\t"<<s.getCycleTime()<<endl;
+             //cout<<endl<<"Optimal solutions vector\n--------------------------"<<endl;
+             //s.printBestHeuristicSolution();
           }
+     
+          }
+    
     }
     string shallContinue;
     cout<<"Shall we continue?(Y/N)"<<endl;
@@ -342,4 +465,6 @@ int main(int argc, char**argv)
     }while(true);
     
     return 8;
+     * 
+     */
 }

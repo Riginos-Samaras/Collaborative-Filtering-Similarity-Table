@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Project-A
+PROJECTNAME=Project-Similarity-Table
 
 # Active Configuration
 DEFAULTCONF=Debug

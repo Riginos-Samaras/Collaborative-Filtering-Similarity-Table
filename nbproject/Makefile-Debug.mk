@@ -35,12 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/category.o \
+	${OBJECTDIR}/categoryGraph.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/node.o \
-	${OBJECTDIR}/nodeGraph.o \
-	${OBJECTDIR}/parser.o \
-	${OBJECTDIR}/station.o \
-	${OBJECTDIR}/stationList.o
+	${OBJECTDIR}/similarityMatrix.o \
+	${OBJECTDIR}/user.o \
+	${OBJECTDIR}/userGraph.o
 
 
 # C Compiler Flags
@@ -61,41 +61,41 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project-a
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project-similarity-table
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project-a: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project-similarity-table: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project-a ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project-similarity-table ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/category.o: category.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/category.o category.cpp
+
+${OBJECTDIR}/categoryGraph.o: categoryGraph.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/categoryGraph.o categoryGraph.cpp
 
 ${OBJECTDIR}/main.o: main.cc 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cc
 
-${OBJECTDIR}/node.o: node.cpp 
+${OBJECTDIR}/similarityMatrix.o: similarityMatrix.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/node.o node.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/similarityMatrix.o similarityMatrix.cpp
 
-${OBJECTDIR}/nodeGraph.o: nodeGraph.cpp 
+${OBJECTDIR}/user.o: user.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/nodeGraph.o nodeGraph.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/user.o user.cpp
 
-${OBJECTDIR}/parser.o: parser.cpp 
+${OBJECTDIR}/userGraph.o: userGraph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/parser.o parser.cpp
-
-${OBJECTDIR}/station.o: station.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/station.o station.cpp
-
-${OBJECTDIR}/stationList.o: stationList.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/stationList.o stationList.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/userGraph.o userGraph.cpp
 
 # Subprojects
 .build-subprojects:
@@ -103,7 +103,7 @@ ${OBJECTDIR}/stationList.o: stationList.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project-a
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/project-similarity-table
 
 # Subprojects
 .clean-subprojects:

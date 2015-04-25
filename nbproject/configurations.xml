@@ -4,56 +4,30 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>node.h</itemPath>
-      <itemPath>nodeGraph.h</itemPath>
-      <itemPath>parser.h</itemPath>
-      <itemPath>station.h</itemPath>
-      <itemPath>stationList.h</itemPath>
+      <itemPath>category.h</itemPath>
+      <itemPath>categoryGraph.h</itemPath>
+      <itemPath>similarityMatrix.h</itemPath>
+      <itemPath>user.h</itemPath>
+      <itemPath>userGraph.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
-      <logicalFolder name="benchmarks" displayName="benchmarks" projectFiles="true">
-        <itemPath>benchmarks/ARC111.IN2</itemPath>
-        <itemPath>benchmarks/ARC83.IN2</itemPath>
-        <itemPath>benchmarks/BARTHOL2.IN2</itemPath>
-        <itemPath>benchmarks/BARTHOLD.IN2</itemPath>
-        <itemPath>benchmarks/BOWMAN8.IN2</itemPath>
-        <itemPath>benchmarks/BUXEY.IN2</itemPath>
-        <itemPath>benchmarks/GUNTHER.IN2</itemPath>
-        <itemPath>benchmarks/HAHN.IN2</itemPath>
-        <itemPath>benchmarks/HESKIA.IN2</itemPath>
-        <itemPath>benchmarks/JACKSON.IN2</itemPath>
-        <itemPath>benchmarks/JAESCHKE.IN2</itemPath>
-        <itemPath>benchmarks/KILBRID.IN2</itemPath>
-        <itemPath>benchmarks/LUTZ1.IN2</itemPath>
-        <itemPath>benchmarks/LUTZ2.IN2</itemPath>
-        <itemPath>benchmarks/LUTZ3.IN2</itemPath>
-        <itemPath>benchmarks/MANSOOR.IN2</itemPath>
-        <itemPath>benchmarks/MERTENS.IN2</itemPath>
-        <itemPath>benchmarks/MITCHELL.IN2</itemPath>
-        <itemPath>benchmarks/MUKHERJE.IN2</itemPath>
-        <itemPath>benchmarks/ROSZIEG.IN2</itemPath>
-        <itemPath>benchmarks/SAWYER30.IN2</itemPath>
-        <itemPath>benchmarks/SCHOLL.IN2</itemPath>
-        <itemPath>benchmarks/TONGE70.IN2</itemPath>
-        <itemPath>benchmarks/WARNECKE.IN2</itemPath>
-        <itemPath>benchmarks/WEE-MAG.IN2</itemPath>
-      </logicalFolder>
       <logicalFolder name="datasets" displayName="datasets" projectFiles="true">
-        <itemPath>datasets/dataset-1.txt</itemPath>
-        <itemPath>datasets/dataset-2.txt</itemPath>
+        <itemPath>datasets/C.txt</itemPath>
+        <itemPath>datasets/U.txt</itemPath>
+        <itemPath>datasets/category_ratings.txt</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>category.cpp</itemPath>
+      <itemPath>categoryGraph.cpp</itemPath>
       <itemPath>main.cc</itemPath>
-      <itemPath>node.cpp</itemPath>
-      <itemPath>nodeGraph.cpp</itemPath>
-      <itemPath>parser.cpp</itemPath>
-      <itemPath>station.cpp</itemPath>
-      <itemPath>stationList.cpp</itemPath>
+      <itemPath>similarityMatrix.cpp</itemPath>
+      <itemPath>user.cpp</itemPath>
+      <itemPath>userGraph.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -76,81 +50,33 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="benchmarks/ARC111.IN2" ex="false" tool="3" flavor2="0">
+      <item path="category.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="benchmarks/ARC83.IN2" ex="false" tool="3" flavor2="0">
+      <item path="category.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="benchmarks/BARTHOL2.IN2" ex="false" tool="3" flavor2="0">
+      <item path="categoryGraph.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="benchmarks/BARTHOLD.IN2" ex="false" tool="3" flavor2="0">
+      <item path="categoryGraph.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="benchmarks/BOWMAN8.IN2" ex="false" tool="3" flavor2="0">
+      <item path="datasets/C.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="benchmarks/BUXEY.IN2" ex="false" tool="3" flavor2="0">
+      <item path="datasets/U.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="benchmarks/GUNTHER.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/HAHN.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/HESKIA.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/JACKSON.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/JAESCHKE.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/KILBRID.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/LUTZ1.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/LUTZ2.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/LUTZ3.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/MANSOOR.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/MERTENS.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/MITCHELL.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/MUKHERJE.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/ROSZIEG.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/SAWYER30.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/SCHOLL.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/TONGE70.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/WARNECKE.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/WEE-MAG.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="datasets/dataset-1.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="datasets/dataset-2.txt" ex="false" tool="3" flavor2="0">
+      <item path="datasets/category_ratings.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cc" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="node.cpp" ex="false" tool="1" flavor2="0">
+      <item path="similarityMatrix.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="node.h" ex="false" tool="3" flavor2="0">
+      <item path="similarityMatrix.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="nodeGraph.cpp" ex="false" tool="1" flavor2="0">
+      <item path="user.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="nodeGraph.h" ex="false" tool="3" flavor2="0">
+      <item path="user.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="parser.cpp" ex="false" tool="1" flavor2="0">
+      <item path="userGraph.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="parser.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="station.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="station.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="stationList.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="stationList.h" ex="false" tool="3" flavor2="0">
+      <item path="userGraph.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -173,81 +99,33 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="benchmarks/ARC111.IN2" ex="false" tool="3" flavor2="0">
+      <item path="category.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="benchmarks/ARC83.IN2" ex="false" tool="3" flavor2="0">
+      <item path="category.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="benchmarks/BARTHOL2.IN2" ex="false" tool="3" flavor2="0">
+      <item path="categoryGraph.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="benchmarks/BARTHOLD.IN2" ex="false" tool="3" flavor2="0">
+      <item path="categoryGraph.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="benchmarks/BOWMAN8.IN2" ex="false" tool="3" flavor2="0">
+      <item path="datasets/C.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="benchmarks/BUXEY.IN2" ex="false" tool="3" flavor2="0">
+      <item path="datasets/U.txt" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="benchmarks/GUNTHER.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/HAHN.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/HESKIA.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/JACKSON.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/JAESCHKE.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/KILBRID.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/LUTZ1.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/LUTZ2.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/LUTZ3.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/MANSOOR.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/MERTENS.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/MITCHELL.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/MUKHERJE.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/ROSZIEG.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/SAWYER30.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/SCHOLL.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/TONGE70.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/WARNECKE.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="benchmarks/WEE-MAG.IN2" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="datasets/dataset-1.txt" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="datasets/dataset-2.txt" ex="false" tool="3" flavor2="0">
+      <item path="datasets/category_ratings.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cc" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="node.cpp" ex="false" tool="1" flavor2="0">
+      <item path="similarityMatrix.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="node.h" ex="false" tool="3" flavor2="0">
+      <item path="similarityMatrix.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="nodeGraph.cpp" ex="false" tool="1" flavor2="0">
+      <item path="user.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="nodeGraph.h" ex="false" tool="3" flavor2="0">
+      <item path="user.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="parser.cpp" ex="false" tool="1" flavor2="0">
+      <item path="userGraph.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="parser.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="station.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="station.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="stationList.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="stationList.h" ex="false" tool="3" flavor2="0">
+      <item path="userGraph.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
