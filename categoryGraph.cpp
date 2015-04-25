@@ -10,7 +10,7 @@
         
         void categoryGraph::printNodes(){   
             
-            for( int i= 0; i <categoryList.size(); ++i){
+            for( int i= 0; i <categoryList.size(); i++){
                std::cout<<"\n";   
                std::cout<<categoryList[i].getID();
                std::cout<<"::"<<categoryList[i].getName();
@@ -21,7 +21,7 @@
         int categoryGraph::getIDof(int NAME){
             
             
-            for( int i= 0; i <categoryList.size(); ++i){
+            for( int i= 0; i <categoryList.size(); i++){
                 if(categoryList[i].getName()==NAME){
                     return categoryList[i].getID();             
                 }
@@ -30,7 +30,7 @@
         }
 
         int categoryGraph::getNameof(int ID){      
-            for( int i= 0; i <categoryList.size(); ++i){
+            for( int i= 0; i <categoryList.size(); i++){
                 if(categoryList[i].getID()==ID){
                     return categoryList[i].getName();             
                 }

@@ -86,15 +86,15 @@ int main(int argc, char**argv)
     
    // UG.printNodes();
    // CG.printNodes();
-    
-    similarityMatrix Matrix(CG.getcategoryList().size(),UG.getuserList().size());
+    similarityMatrix Matrix(CG.getcategoryList().size()-1,UG.getuserList().size());
     
     Matrix.printMatrix();
     
     
-    
+    int num=0;
     //RATING PARSER
     for( std::string line; getline( UserCategoriesRating, line ); ){
+        
     size_t pos = 0;
     std::string delimiter = ",";
     std::string token; 
@@ -112,12 +112,17 @@ int main(int argc, char**argv)
     cout<<CG.getIDof(std::stoi(tokenOne))<<"->"<<tokenOne<<","<<UG.getIDof(std::stoi(tokenTwo))<<"->"<<tokenTwo<<","<<tokenThree<<endl;
     Matrix.changeValueofMatrixAt(CG.getIDof(std::stoi(tokenOne)) , UG.getIDof(std::stoi(tokenTwo)), std::stoi(tokenThree));
    // CG.insertCategory(std::stoi (tokenOne,&sz),std::stoi (tokenTwo,&sz));
-    
+    //num
     
     }   
     
-    
+    //cout<<
     Matrix.printMatrix();
+    
+    cout<<"\n"<<CG.getcategoryList().size()<<" "<<CG.getIDof(4);
+    //Matrix.similarityAlgorithm();
+    
+    //Matrix.printsimilarityMatrix();
     
     
     //int **ary[][];
