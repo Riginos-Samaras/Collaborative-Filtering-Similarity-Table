@@ -109,7 +109,7 @@ int main(int argc, char**argv)
         line.erase(0, pos + delimiter.length());
     }
     tokenThree=line; 
-    //cout<<CG.getIDof(std::stoi(tokenOne))<<"->"<<tokenOne<<","<<UG.getIDof(std::stoi(tokenTwo))<<"->"<<tokenTwo<<","<<tokenThree<<endl;
+    cout<<CG.getIDof(std::stoi(tokenOne))<<"->"<<tokenOne<<","<<UG.getIDof(std::stoi(tokenTwo))<<"->"<<tokenTwo<<","<<tokenThree<<endl;
     Matrix.changeValueofMatrixAt(CG.getIDof(std::stoi(tokenOne)) , UG.getIDof(std::stoi(tokenTwo)), std::stoi(tokenThree));
    // CG.insertCategory(std::stoi (tokenOne,&sz),std::stoi (tokenTwo,&sz));
     
@@ -119,11 +119,12 @@ int main(int argc, char**argv)
     
     Matrix.printMatrix();
     
+    
     //int **ary[][];
     //int ary2[4][4];
     
     
-    
+    //Matrix.printsimilarityMatrix();
     
     /*
     do{
