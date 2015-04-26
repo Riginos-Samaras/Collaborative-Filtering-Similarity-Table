@@ -82,25 +82,30 @@
              float rx=0;
              float ry=0;
              float numerator=0;
+             float denominator1=0;
+             float denominator2=0;
              float denominator=0;
              float av_rx=0;
              float av_ry=0;
             
             for(int x = 0; x < N; x++){
                 for(int y = 0; y < N; y++){
+                    numerator=0;
+                    denominator1=0;
+                    denominator2=0;
                     av_rx=averageRatingat(x);
                     av_ry=averageRatingat(y);
                     rx=0;
-                    ry=0;
-                    
+                    ry=0;       
                     for(int I=0; I<M; I++)
                     {
                         rx=category_user_Table[x][I];
                         ry=category_user_Table[y][I];
                         numerator=numerator+(rx-av_rx)*(ry-av_ry);
-                        denominator=denominator+(rx-av_rx)*(rx-av_rx)*(ry-av_ry)*(ry-av_ry);     
+                        denominator1=denominator1+(rx-av_rx)*(rx-av_rx);     
+                        denominator2=denominator1+(ry-av_ry)*(ry-av_ry);
                     }
-                    denominator=std::sqrt(denominator);
+                    denominator=std::sqrt((denominator1*denominator2));
                     
                     category_category_similarity_Table[x][y]=numerator/denominator;
                     
@@ -116,15 +121,22 @@
                     
                   std::cout <<i<<"-> ";
                   for(int j = 0; j < N; j++){
-                    if(category_category_similarity_Table[i][j]<0.1)
-                        std::cout<<0<<" ";
-                    else
-                        std::cout << category_category_similarity_Table[i][j]/100000<<" ";
+                    //if(category_category_similarity_Table[i][j]<0.1)
+                      //  std::cout<<0<<" ";
+                    //else
+                        std::cout << category_category_similarity_Table[i][j]<<" ";
                     if(j==N-1){
                         std::cout <<" <-"<< j;
                     }
                   }
                   std::cout <<"\n";
                 }
+        
+        }
+        
+        double** similarityMatrix::getSimilarityMatrix(){
+        
+            return similarityMatrix::category_category_similarity_Table;
+        
         
         }

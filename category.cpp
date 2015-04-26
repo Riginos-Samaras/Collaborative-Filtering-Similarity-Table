@@ -20,3 +20,12 @@
    void category::setID(int Id){
        id=Id;
    }
+   void category::setLabel( std::string L){
+       L.replace(L.begin(),L.begin()+1,"");  
+       L.replace(L.end()-1,L.end(),"");  
+       label=L;
+   }
+  
+   std::string category::getLabel(){
+       return label;
+   }

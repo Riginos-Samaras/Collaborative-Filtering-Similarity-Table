@@ -19,6 +19,7 @@ class categoryGraph{
         void printNodes();
         int getIDof(int);
         int getNameof(int);
+        void setLabelof(int,std::string);
         std::vector<category> getcategoryList();
 };
 #endif	/* NODEGRAPH_H */

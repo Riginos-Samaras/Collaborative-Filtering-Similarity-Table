@@ -25,6 +25,7 @@ class category{
  private:
     int id;
     int name;
+    std::string label;
  public:
     
     category();
@@ -33,6 +34,8 @@ class category{
     void setID(int);
     int getName();
     void setName(int);
+    void setLabel(std::string);
+    std::string getLabel();
     
 };
 

@@ -42,3 +42,16 @@
         std::vector<category> categoryGraph::getcategoryList(){
             return categoryList;
         }
+        
+        
+        void categoryGraph::setLabelof(int name,std::string label){
+                
+          for( int i= 0; i <categoryList.size(); i++){
+                if(categoryList[i].getName()==name){
+                    return categoryList[i].setLabel(label);           
+                }
+            }
+            
+        }
+        
+        

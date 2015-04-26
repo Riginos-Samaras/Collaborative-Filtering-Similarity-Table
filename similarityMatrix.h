@@ -26,6 +26,7 @@ class similarityMatrix{
         void changeValueofMatrixAt(int i,int j, double Value);
         float averageRatingat(int);
         void similarityAlgorithm();
+        double** getSimilarityMatrix();
 };
 #endif	/* SIMILARITYMATRIX_H */
 

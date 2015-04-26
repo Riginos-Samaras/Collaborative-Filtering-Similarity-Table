@@ -12,6 +12,7 @@
 #include <fstream>
 #include <string>     // std::string, std::stoi
 #include <vector>
+
 using namespace std;
 
 #include <algorithm>    // std::max
@@ -21,7 +22,9 @@ using namespace::std;
 int main(int argc, char**argv)
 {
     
-    
+    ofstream similarityfile;
+    similarityfile.open ("datasets/similaritiesBetweenCategories.txt");
+   
     std::string::size_type sz;   // alias of size_t
     std::string str_dec = "2001";
     int i_dec = std::stoi (str_dec,&sz);
@@ -41,6 +44,7 @@ int main(int argc, char**argv)
     std::ifstream Users("datasets/U.txt");
     std::ifstream UserCategoriesRating("datasets/category_ratings.txt");
     std::ifstream Categories("datasets/C.txt");
+    std::ifstream CategoriesLabels("datasets/C_String.txt");
     
     std::string line;
     std::string tokenOne;
@@ -83,6 +87,24 @@ int main(int argc, char**argv)
     
     }   
     
+    //CATEGORIES LABEL PARSER
+    for( std::string line; getline( CategoriesLabels, line ); ){
+    size_t pos = 0;
+    std::string delimiter = ",";
+    std::string token; 
+    int i=0;
+    while ((pos = line.find(delimiter)) != std::string::npos) {
+        token = line.substr(0, pos);
+        tokenOne=token;
+        line.erase(0, pos + delimiter.length());
+    }
+    tokenTwo=line; 
+    CG.setLabelof(std::stoi (tokenOne,&sz),tokenTwo);
+  //  CG.insertCategory(std::stoi (tokenOne,&sz),std::stoi (tokenTwo,&sz));
+    
+    
+    }  
+    
     
    // UG.printNodes();
    // CG.printNodes();
@@ -117,14 +139,52 @@ int main(int argc, char**argv)
     }   
     
     //cout<<
-    Matrix.printMatrix();
+    //Matrix.printMatrix();
     
     cout<<"\n"<<CG.getcategoryList().size()<<" "<<CG.getIDof(4);
-    //Matrix.similarityAlgorithm();
+    Matrix.similarityAlgorithm();
     
-    //Matrix.printsimilarityMatrix();
+    Matrix.printsimilarityMatrix();
     
     
+   std::vector<category> CL=CG.getcategoryList();
+   double** ST=Matrix.getSimilarityMatrix();
+   
+   for( int x= 0; x <CL.size(); x++){
+               //if category is deleted
+               if(CL[x].getLabel()=="")continue;
+               similarityfile<<"\n";
+               std::cout<<"\n";   
+              // std::cout<<CL[x].getName();
+               
+               for( int y= 0; y <CL.size(); y++){   
+                 if(CL[y].getLabel()=="")continue;
+                 
+             //  std::cout<<<<":";
+                 similarityfile<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<ST[x][y]<<"%";
+                 std::cout<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<ST[x][y]<<"%";
+               }
+            }
+   
+   
+   for( int x= 0; x <CL.size(); x++){
+               //if category is deleted
+               if(CL[x].getLabel()=="")continue;
+               similarityfile<<"\n";
+               std::cout<<"\n";   
+              // std::cout<<CL[x].getName();
+               
+               for( int y= 0; y <CL.size(); y++){   
+                 if(CL[y].getLabel()=="")continue;
+                 
+             //  std::cout<<<<":";
+                 similarityfile<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<ST[x][y]<<"%";
+                 std::cout<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<ST[x][y]<<"%";
+               }
+            }
+   
+    similarityfile.close();
+  
     //int **ary[][];
     //int ary2[4][4];
     
