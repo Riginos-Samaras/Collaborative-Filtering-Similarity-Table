@@ -96,17 +96,28 @@
                     av_rx=averageRatingat(x);
                     av_ry=averageRatingat(y);
                     rx=0;
-                    ry=0;       
+                    ry=0;    
+                        cout<<"("<<x<<","<<y<<")  ";
                     for(int I=0; I<M; I++)
                     {
                         rx=category_user_Table[x][I];
                         ry=category_user_Table[y][I];
-                        numerator=numerator+(rx-av_rx)*(ry-av_ry);
-                        denominator1=denominator1+(rx-av_rx)*(rx-av_rx);     
-                        denominator2=denominator1+(ry-av_ry)*(ry-av_ry);
+                       // numerator=numerator+(rx-av_rx)*(ry-av_ry);
+                       // denominator1=denominator1+(rx-av_rx)*(rx-av_rx);     
+                       // denominator2=denominator1+(ry-av_ry)*(ry-av_ry);
+                        numerator=numerator+(rx*ry);
+                        denominator1=denominator1+(rx*rx);
+                        denominator2=denominator2+(ry*ry);
+//                        cout<<"\tn1:"<<numerator;
+//                        cout<<"\trx:"<<rx<<"->";
+//                        cout<<"ry:"<<ry;
                     }
-                    denominator=std::sqrt((denominator1*denominator2));
+                    //cout<<" numerator"<<numerator;
                     
+                   // denominator=std::sqrt((denominator1*denominator2));
+                   denominator=std::sqrt(denominator1)+std::sqrt(denominator2);
+                    
+                   // cout<<" denumerator"<<denominator<<"\n";
                     category_category_similarity_Table[x][y]=numerator/denominator;
                     
             }

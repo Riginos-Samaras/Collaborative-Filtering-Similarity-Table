@@ -149,7 +149,7 @@ int main(int argc, char**argv)
     
    std::vector<category> CL=CG.getcategoryList();
    double** ST=Matrix.getSimilarityMatrix();
-   
+   /*
    for( int x= 0; x <CL.size(); x++){
                //if category is deleted
                if(CL[x].getLabel()=="")continue;
@@ -161,12 +161,12 @@ int main(int argc, char**argv)
                  if(CL[y].getLabel()=="")continue;
                  
              //  std::cout<<<<":";
-                 similarityfile<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<ST[x][y]<<"%";
-                 std::cout<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<ST[x][y]<<"%";
+                 similarityfile<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<ST[x][y];
+                 std::cout<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<ST[x][y];
                }
             }
    
-   
+   */
    for( int x= 0; x <CL.size(); x++){
                //if category is deleted
                if(CL[x].getLabel()=="")continue;
@@ -178,8 +178,8 @@ int main(int argc, char**argv)
                  if(CL[y].getLabel()=="")continue;
                  
              //  std::cout<<<<":";
-                 similarityfile<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<ST[x][y]<<"%";
-                 std::cout<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<ST[x][y]<<"%";
+                 similarityfile<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<ST[x][y];
+                 std::cout<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<ST[x][y];
                }
             }
    
