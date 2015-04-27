@@ -6,7 +6,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <valarray>
-
+#include <iomanip>      // std::setprecision
 #include <cstdlib> 
 #include <iostream>
 #include <fstream>
@@ -178,8 +178,13 @@ int main(int argc, char**argv)
                  if(CL[y].getLabel()=="")continue;
                  
              //  std::cout<<<<":";
-                 similarityfile<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<ST[x][y];
-                 std::cout<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<ST[x][y];
+                 float val = 2*ST[x][y]*100;
+
+float rounded_down = floorf(val * 100) / 100;   /* Result: 37.77 */
+float nearest = roundf(val * 100) / 100;  /* Result: 37.78 */
+float rounded_up = ceilf(val * 100) / 100;      /* Result: 37.78 */
+                    similarityfile<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<rounded_up<<" %";
+                    std::cout<<"\n\t"<<CL[x].getLabel()<<" -> "<<CL[y].getLabel()<<" : "<<rounded_up<<" %";
                }
             }
    

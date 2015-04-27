@@ -105,9 +105,30 @@
                        // numerator=numerator+(rx-av_rx)*(ry-av_ry);
                        // denominator1=denominator1+(rx-av_rx)*(rx-av_rx);     
                        // denominator2=denominator1+(ry-av_ry)*(ry-av_ry);
-                        numerator=numerator+(rx*ry);
-                        denominator1=denominator1+(rx*rx);
-                        denominator2=denominator2+(ry*ry);
+                        if((rx*ry)>25){
+                            numerator=numerator+25;
+                         }
+                        else
+                        {
+                            numerator=numerator+(rx*ry);
+                        }
+                        
+                        if((rx*rx)>25){
+                            denominator1=denominator1+25;
+                        }
+                        else
+                        {
+                            denominator1=denominator1+(rx*rx);
+                        }
+                        
+                        if((ry*ry)>25){
+                            denominator2=denominator2+25;
+                        }
+                        else
+                        {
+                            denominator2=denominator2+(ry*ry);
+                        }
+                          
 //                        cout<<"\tn1:"<<numerator;
 //                        cout<<"\trx:"<<rx<<"->";
 //                        cout<<"ry:"<<ry;
@@ -115,7 +136,7 @@
                     //cout<<" numerator"<<numerator;
                     
                    // denominator=std::sqrt((denominator1*denominator2));
-                   denominator=std::sqrt(denominator1)+std::sqrt(denominator2);
+                   denominator=std::sqrt((denominator1*denominator1))+std::sqrt((denominator2*denominator2));
                     
                    // cout<<" denumerator"<<denominator<<"\n";
                     category_category_similarity_Table[x][y]=numerator/denominator;
