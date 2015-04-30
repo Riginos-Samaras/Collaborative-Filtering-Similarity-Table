@@ -18,6 +18,7 @@
         <itemPath>datasets/C_String.txt</itemPath>
         <itemPath>datasets/U.txt</itemPath>
         <itemPath>datasets/category_ratings.txt</itemPath>
+        <itemPath>datasets/similaritiesBetweenCategories.txt</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
@@ -66,6 +67,11 @@
       <item path="datasets/U.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="datasets/category_ratings.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="datasets/similaritiesBetweenCategories.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="main.cc" ex="false" tool="1" flavor2="0">
       </item>
@@ -117,6 +123,11 @@
       <item path="datasets/U.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="datasets/category_ratings.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="datasets/similaritiesBetweenCategories.txt"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="main.cc" ex="false" tool="1" flavor2="0">
       </item>

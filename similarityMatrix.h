@@ -22,11 +22,13 @@ class similarityMatrix{
         similarityMatrix();  
         similarityMatrix(int,int);
         void printMatrix();
+        void printMatrixat(int);
         void printsimilarityMatrix();
         void changeValueofMatrixAt(int i,int j, double Value);
         float averageRatingat(int);
         void similarityAlgorithm();
         double** getSimilarityMatrix();
+        void similarityAlgorithmsimple();
 };
 #endif	/* SIMILARITYMATRIX_H */
 

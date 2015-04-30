@@ -26,7 +26,7 @@
                     return categoryList[i].getID();             
                 }
             }
-            return 0;
+            return 12345;
         }
 
         int categoryGraph::getNameof(int ID){      

@@ -97,7 +97,6 @@
                     av_ry=averageRatingat(y);
                     rx=0;
                     ry=0;    
-                        cout<<"("<<x<<","<<y<<")  ";
                     for(int I=0; I<M; I++)
                     {
                         rx=category_user_Table[x][I];
@@ -105,9 +104,10 @@
                        // numerator=numerator+(rx-av_rx)*(ry-av_ry);
                        // denominator1=denominator1+(rx-av_rx)*(rx-av_rx);     
                        // denominator2=denominator1+(ry-av_ry)*(ry-av_ry);
-                        if((rx*ry)>25){
+                        if((rx*ry)>25)
+                        {
                             numerator=numerator+25;
-                         }
+                        }
                         else
                         {
                             numerator=numerator+(rx*ry);
@@ -128,18 +128,20 @@
                         {
                             denominator2=denominator2+(ry*ry);
                         }
-                          
-//                        cout<<"\tn1:"<<numerator;
-//                        cout<<"\trx:"<<rx<<"->";
-//                        cout<<"ry:"<<ry;
                     }
                     //cout<<" numerator"<<numerator;
                     
-                   // denominator=std::sqrt((denominator1*denominator2));
-                   denominator=std::sqrt((denominator1*denominator1))+std::sqrt((denominator2*denominator2));
-                    
-                   // cout<<" denumerator"<<denominator<<"\n";
-                    category_category_similarity_Table[x][y]=numerator/denominator;
+                   denominator=(std::sqrt((denominator1*denominator1))*std::sqrt((denominator2*denominator2)))/2;
+                   
+                   
+                    if(x==y)
+                        cout<<numerator/denominator<<" "<<numerator<<" "<<denominator<<" "<<x<<" "<<y<<endl;
+                   
+                       if(denominator==0){
+                            category_category_similarity_Table[x][y]=0;
+                       }else{                           
+                         category_category_similarity_Table[x][y]=numerator/denominator;
+                       }
                     
             }
             }
@@ -166,9 +168,81 @@
         
         }
         
+        
+         void similarityMatrix::similarityAlgorithmsimple(){
+            //category_category_similarity_Table;
+             float rx=0;
+             float ry=0;
+             float numerator=0;
+             float denominator1=0;
+             float denominator2=0;
+             float denominator=0;
+             float av_rx=0;
+             float av_ry=0;
+            
+            for(int x = 0; x < N; x++){
+                for(int y = 0; y < N; y++){
+                    numerator=0;
+                    denominator1=0;
+                    denominator2=0;
+                    av_rx=averageRatingat(x);
+                    av_ry=averageRatingat(y);
+                    rx=0;
+                    ry=0;    
+                    for(int I=0; I<M; I++)
+                    {
+                        rx=category_user_Table[x][I];
+                        ry=category_user_Table[y][I];
+                       // numerator=numerator+(rx-av_rx)*(ry-av_ry);
+                       // denominator1=denominator1+(rx-av_rx)*(rx-av_rx);     
+                       // denominator2=denominator1+(ry-av_ry)*(ry-av_ry);
+                        if(rx<=ry)
+                        {
+                            numerator=numerator+rx;
+                        }
+                        else
+                        {
+                            numerator=numerator+ry;
+                        }
+                        
+                     
+                    }
+                                            
+                         category_category_similarity_Table[x][y]=numerator;
+                    
+                    
+            }
+            }
+        
+        }
+       
+        
+        
         double** similarityMatrix::getSimilarityMatrix(){
         
             return similarityMatrix::category_category_similarity_Table;
+        
+        
+        }
+        
+        
+        
+        void similarityMatrix::printMatrixat(int x){
+        
+             
+                    
+                  std::cout <<x<<"-> ";
+                  for(int j = 0; j < N; j++){
+                    //if(category_category_similarity_Table[i][j]<0.1)
+                      //  std::cout<<0<<" ";
+                    //else
+                        std::cout << category_user_Table[x][j]<<" ";
+                    if(j==N-1){
+                        std::cout <<" <-"<< j;
+                    }
+                  }
+                  std::cout <<"\n";
+                
         
         
         }

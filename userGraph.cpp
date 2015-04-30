@@ -25,7 +25,7 @@
                     return userList[i].getID();             
                 }
             }
-            return 0;
+            return 12345;
         }
 
         int userGraph::getNameof(int ID){      

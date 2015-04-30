@@ -18,12 +18,14 @@
         <group>
             <file>file:/Users/Dimitris/NetBeansProjects/Project-Similarity-Table/datasets/U.txt</file>
             <file>file:/Users/Dimitris/NetBeansProjects/Project-Similarity-Table/user.cpp</file>
+            <file>file:/Users/Dimitris/NetBeansProjects/Project-Similarity-Table/userGraph.h</file>
+            <file>file:/Users/Dimitris/NetBeansProjects/Project-Similarity-Table/userGraph.cpp</file>
             <file>file:/Users/Dimitris/NetBeansProjects/Project-Similarity-Table/similarityMatrix.h</file>
             <file>file:/Users/Dimitris/NetBeansProjects/Project-Similarity-Table/user.h</file>
             <file>file:/Users/Dimitris/NetBeansProjects/Project-Similarity-Table/categoryGraph.cpp</file>
             <file>file:/Users/Dimitris/NetBeansProjects/Project-Similarity-Table/category.cpp</file>
             <file>file:/Users/Dimitris/NetBeansProjects/Project-Similarity-Table/similarityMatrix.cpp</file>
-            <file>file:/Users/Dimitris/NetBeansProjects/Project-Similarity-Table/datasets/category_ratings.txt</file>
+            <file>file:/Users/Dimitris/NetBeansProjects/Project-Similarity-Table/datasets/similaritiesBetweenCategories.txt</file>
             <file>file:/Users/Dimitris/NetBeansProjects/Project-Similarity-Table/categoryGraph.h</file>
             <file>file:/Users/Dimitris/NetBeansProjects/Project-Similarity-Table/datasets/C_String.txt</file>
             <file>file:/Users/Dimitris/NetBeansProjects/Project-Similarity-Table/datasets/C.txt</file>
